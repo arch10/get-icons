@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.gigaworks.tech.geticons.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/showIconSetDetails"
+            app:destination="@id/iconSetDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/iconSetDetailsFragment"
+        android:name="com.gigaworks.tech.geticons.ui.iconsetdetails.IconSetDetailsFragment"
+        android:label="fragment_icon_set_details"
+        tools:layout="@layout/fragment_icon_set_details" >
+        <argument
+            android:name="iconSet"
+            app:argType="com.gigaworks.tech.geticons.domain.IconSet" />
+    </fragment>
+</navigation>
