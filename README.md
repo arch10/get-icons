@@ -102,7 +102,7 @@ The Iconfinder API is an HTTP JSON API and allows you to programmatically access
 
 ## Video
 
-[Watch Demo Video Here]("https://github.com/arch10/get-icons/blob/main/docs/assets/video/GetIcons.mp4?raw=true")
+[Watch Demo Video Here](https://github.com/arch10/get-icons/blob/main/docs/assets/video/GetIcons.mp4?raw=true)
 
 ## License 🔖
 ```
