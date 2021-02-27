@@ -10,6 +10,7 @@ import com.gigaworks.tech.geticons.network.model.toDomain
 import com.gigaworks.tech.geticons.network.safeApiCall
 import com.gigaworks.tech.geticons.network.service.ApiService
 import com.gigaworks.tech.geticons.ui.home.IconSetPagingSource
+import com.gigaworks.tech.geticons.ui.home.IconsPagingSource
 import com.gigaworks.tech.geticons.ui.iconsetdetails.IconPagingSource
 import com.gigaworks.tech.geticons.util.Response
 import javax.inject.Inject
@@ -39,6 +40,18 @@ class ApiRepository @Inject constructor(
             ),
             pagingSourceFactory = {
                 IconPagingSource(network, iconsetId)
+            }
+        ).liveData
+
+    fun getIconsByQuery(query: String) =
+        Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                maxSize = 100,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = {
+                IconsPagingSource(network, query)
             }
         ).liveData
 

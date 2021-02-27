@@ -33,4 +33,12 @@ interface ApiService {
         @Query("count") count: Int = 20
     ) : IconSetResponse
 
+    @Headers("Authorization: Bearer $AUTH_TOKEN")
+    @GET("icons/search")
+    suspend fun searchIcons(
+        @Query("query") query: String = "",
+        @Query("offset") after: Int = 0,
+        @Query("count") count: Int = 20
+    ) : IconResponse
+
 }
