@@ -69,6 +69,10 @@ data class IconSet()        # Contains IconSet object
 data class Author()         # Contains Author object
 ```
 
+## Navigation Graph
+
+<img alt="IconSets" src="./docs/assets/nav_graph.PNG">
+
 ## Backend
 
 The Iconfinder API is an HTTP JSON API and allows you to programmatically access resources on the service, such as icons, icon sets, categories, styles, authors, etc. The API is accessible on the api.iconfinder.com domain and always used over HTTPS. It accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authorization, and verbs.
