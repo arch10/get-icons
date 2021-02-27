@@ -17,7 +17,7 @@ class IconSetAdapter(private val clickListener: OnIconSetClick) : PagingDataAdap
 
         fun bind(iconSet: IconSet) {
             with(binding) {
-                author.text = iconSet.author.name
+                author.text = iconSet.authorName
                 type.text = iconSet.type
                 price.text = iconSet.price
                 name.text = iconSet.name

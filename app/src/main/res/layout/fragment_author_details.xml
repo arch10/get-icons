@@ -81,6 +81,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/website" />
 
+            <ImageView
+                android:id="@+id/notFound"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@drawable/not_found"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/space_xxxl"
+                android:layout_marginBottom="@dimen/space_xxxl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/website"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

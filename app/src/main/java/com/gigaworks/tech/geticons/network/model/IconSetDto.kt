@@ -47,13 +47,6 @@ fun IconSetDto.toDomain(): IconSet {
     }
     val readme = readme?:""
 
-    val author = com.gigaworks.tech.geticons.domain.Author(
-        authorName,
-        website,
-        author.username,
-        author.userId
-    )
-
     return IconSet(
         type,
         name,
@@ -62,6 +55,9 @@ fun IconSetDto.toDomain(): IconSet {
         isPremium,
         iconsetId,
         readme,
-        author
+        authorName,
+        website,
+        author.username,
+        author.userId
     )
 }

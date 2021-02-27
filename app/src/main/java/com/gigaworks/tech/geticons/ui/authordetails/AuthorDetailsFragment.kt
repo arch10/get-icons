@@ -6,19 +6,47 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.gigaworks.tech.geticons.databinding.FragmentAuthorDetailsBinding
+import com.gigaworks.tech.geticons.ui.authordetails.viewmodel.AuthorDetailsViewModel
 import com.gigaworks.tech.geticons.ui.base.BaseFragment
+import com.gigaworks.tech.geticons.util.Response
+import com.gigaworks.tech.geticons.util.logD
 import com.gigaworks.tech.geticons.util.visible
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AuthorDetailsFragment : BaseFragment<FragmentAuthorDetailsBinding>() {
 
     private val args: AuthorDetailsFragmentArgs by navArgs()
+    private val viewModel: AuthorDetailsViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupView()
+        setupObservables()
+    }
+
+    private fun setupObservables() {
+        viewModel.iconSetList.observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                    logD("size: ${it.response.size}")
+                    binding.rv.visible(true)
+                    binding.notFound.visible(false)
+                }
+                is Response.Failure -> {
+                    logD(it.message)
+                    binding.rv.visible(false)
+                    binding.notFound.visible(true)
+                }
+            }
+        }
+        viewModel.loading.observe(viewLifecycleOwner) {
+            binding.loader.visible(it)
+        }
     }
 
     private fun setupView() {
@@ -38,8 +66,9 @@ class AuthorDetailsFragment : BaseFragment<FragmentAuthorDetailsBinding>() {
                     })
                 }
             }
-
         }
+
+        viewModel.getIconSetList(author.id)
     }
 
     override fun getViewBinding(

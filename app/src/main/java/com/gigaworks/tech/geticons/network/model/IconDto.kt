@@ -28,7 +28,7 @@ fun IconDto.toDomain(): Icon {
         "Free"
     }
     val name = tags[0]
-    val imageUrl = containers[0].downloadUrl
+    val imageUrl = if (containers.isNotEmpty()) containers[0].downloadUrl else ""
 
     return Icon(
         isPremium,

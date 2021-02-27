@@ -101,18 +101,20 @@ class IconAdapter(
                 type.text = icon.type
                 price.text = icon.price
                 premium.visible(icon.isPremium)
-                author.text = icon.author?.name
+                author.text = icon.authorName
 
-                val glideUrl = GlideUrl(
-                    icon.imgUrl,
-                    LazyHeaders.Builder()
-                        .addHeader("Authorization", "Bearer $AUTH_TOKEN")
-                        .build()
-                )
-                Glide.with(binding.root)
-                    .load(glideUrl)
-                    .placeholder(R.mipmap.ic_launcher_round)
-                    .into(binding.icon)
+                if(icon.imgUrl.isNotEmpty()) {
+                    val glideUrl = GlideUrl(
+                        icon.imgUrl,
+                        LazyHeaders.Builder()
+                            .addHeader("Authorization", "Bearer $AUTH_TOKEN")
+                            .build()
+                    )
+                    Glide.with(binding.root)
+                        .load(glideUrl)
+                        .placeholder(R.mipmap.ic_launcher_round)
+                        .into(binding.icon)
+                }
 
                 root.setOnClickListener {
                     clickListener.onIconClick(icon)

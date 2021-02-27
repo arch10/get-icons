@@ -38,30 +38,36 @@ class IconSetDetailsFragment : BaseFragment<FragmentIconSetDetailsBinding>() {
         val iconSet = args.iconSet
         with(binding) {
             name.text = iconSet.name
-            author.text = iconSet.author.name
+            author.text = iconSet.authorName
             type.text = iconSet.type
             license.text = iconSet.license
             price.text = iconSet.price
             readme.text = iconSet.readme
-            website.text = iconSet.author.website
+            website.text = iconSet.authorWebsite
             premium.visible(iconSet.isPremium)
 
             if(iconSet.readme.isEmpty()) {
                 readme.text = "N/A"
             }
 
-            if(iconSet.author.website.isEmpty()) {
+            if(iconSet.authorWebsite.isEmpty()) {
                 website.visible(false)
             } else {
                 website.setOnClickListener {
                     startActivity(Intent(Intent.ACTION_VIEW).apply {
-                        data = Uri.parse(iconSet.author.website)
+                        data = Uri.parse(iconSet.authorWebsite)
                     })
                 }
             }
 
             author.setOnClickListener {
-                val action = IconSetDetailsFragmentDirections.iconSetShowAuthor(iconSet.author)
+                val author = Author(
+                    name = iconSet.authorName,
+                    website = iconSet.authorWebsite,
+                    id = iconSet.authorId,
+                    username = iconSet.authorUsername
+                )
+                val action = IconSetDetailsFragmentDirections.iconSetShowAuthor(author)
                 findNavController().navigate(action)
             }
         }
@@ -77,16 +83,13 @@ class IconSetDetailsFragment : BaseFragment<FragmentIconSetDetailsBinding>() {
                 is Response.Success -> {
                     val iconList = it.response.map { icon ->
                         val iconSet = args.iconSet
-                        val author = Author(
-                            name = iconSet.author.name,
-                            website = iconSet.author.website,
-                            id = iconSet.author.id,
-                            username = iconSet.author.username
-                        )
                         icon.apply {
                             readme = iconSet.readme
                             license = iconSet.license
-                            this.author = author
+                            authorName = iconSet.authorName
+                            authorWebsite = iconSet.authorWebsite
+                            authorUsername = iconSet.authorWebsite
+                            authorId = iconSet.authorId
                         }
                     }
                     val adapter = IconAdapter(iconList, object : IconAdapter.OnIconClickListener {

@@ -55,4 +55,17 @@ class ApiRepository @Inject constructor(
         }
     }
 
+    suspend fun getIconSetByAuthor(authorId: Int): Response<List<IconSet>> {
+        return when (val networkResponse =
+            safeApiCall { network.getIconSetByAuthor(authorId).iconsets }) {
+            is Response.Failure -> {
+                networkResponse
+            }
+            is Response.Success -> {
+                val domainResponse = networkResponse.response.map { it.toDomain() }
+                Response.Success(domainResponse)
+            }
+        }
+    }
+
 }

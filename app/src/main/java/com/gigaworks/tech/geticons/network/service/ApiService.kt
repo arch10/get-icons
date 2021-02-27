@@ -26,4 +26,11 @@ interface ApiService {
         @Query("count") count: Int = 20
     ) : IconResponse
 
+    @Headers("Authorization: Bearer $AUTH_TOKEN")
+    @GET("authors/{authorId}/iconsets")
+    suspend fun getIconSetByAuthor(
+        @Path("authorId") authorId: Int,
+        @Query("count") count: Int = 20
+    ) : IconSetResponse
+
 }
