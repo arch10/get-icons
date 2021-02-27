@@ -63,6 +63,11 @@ class AuthorDetailsFragment : BaseFragment<FragmentAuthorDetailsBinding>() {
     }
 
     private fun setupView() {
+
+        setActionBar(binding.toolbar, "Author Details") {
+            findNavController().navigateUp()
+        }
+
         val author = args.author
 
         with(binding) {

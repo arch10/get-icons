@@ -35,6 +35,11 @@ class IconSetDetailsFragment : BaseFragment<FragmentIconSetDetailsBinding>() {
     }
 
     private fun setupView() {
+
+        setActionBar(binding.toolbar, "Icon Set Details") {
+            findNavController().navigateUp()
+        }
+
         val iconSet = args.iconSet
         with(binding) {
             name.text = iconSet.name

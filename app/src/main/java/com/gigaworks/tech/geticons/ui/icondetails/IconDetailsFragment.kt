@@ -36,6 +36,11 @@ class IconDetailsFragment : BaseFragment<FragmentIconDetailsBinding>() {
     }
 
     private fun setupView() {
+
+        setActionBar(binding.toolbar, "Icon Details") {
+            findNavController().navigateUp()
+        }
+
         val icon = args.icon
         with(binding) {
             name.text = icon.name

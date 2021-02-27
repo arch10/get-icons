@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.gigaworks.tech.geticons.R
 import com.gigaworks.tech.geticons.databinding.FragmentHomeBinding
 import com.gigaworks.tech.geticons.ui.base.BaseFragment
 import com.gigaworks.tech.geticons.ui.home.adapter.TabAdapter
@@ -30,7 +32,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
         tabLayoutMediator.attach()
 
-
+        setActionBar(binding.toolbar, getString(R.string.app_name)) {
+            findNavController().navigateUp()
+        }
     }
 
     override fun getViewBinding(
