@@ -108,6 +108,9 @@ The Iconfinder API is an HTTP JSON API and allows you to programmatically access
 
 [Watch Demo Video Here](https://github.com/arch10/get-icons/blob/main/docs/assets/video/GetIcons.mp4?raw=true)
 
+## Download APK
+[![](https://img.shields.io/badge/-Download-informational?style=for-the-badge&color=5094F0)](https://github.com/arch10/get-icons/releases/download/1.0/app-debug.apk)
+
 ## License 🔖
 ```
     Apache 2.0 License
