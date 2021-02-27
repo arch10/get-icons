@@ -21,5 +21,32 @@
         <argument
             android:name="iconSet"
             app:argType="com.gigaworks.tech.geticons.domain.IconSet" />
+        <action
+            android:id="@+id/showIconDetails"
+            app:destination="@id/iconDetailsFragment" />
+        <action
+            android:id="@+id/iconSetShowAuthor"
+            app:destination="@id/authorDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/iconDetailsFragment"
+        android:name="com.gigaworks.tech.geticons.ui.icondetails.IconDetailsFragment"
+        android:label="fragment_icon_details"
+        tools:layout="@layout/fragment_icon_details" >
+        <argument
+            android:name="icon"
+            app:argType="com.gigaworks.tech.geticons.domain.Icon" />
+        <action
+            android:id="@+id/iconDetailsShowAuthor"
+            app:destination="@id/authorDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorDetailsFragment"
+        android:name="com.gigaworks.tech.geticons.ui.authordetails.AuthorDetailsFragment"
+        android:label="fragment_author_details"
+        tools:layout="@layout/fragment_author_details" >
+        <argument
+            android:name="author"
+            app:argType="com.gigaworks.tech.geticons.domain.Author" />
     </fragment>
 </navigation>

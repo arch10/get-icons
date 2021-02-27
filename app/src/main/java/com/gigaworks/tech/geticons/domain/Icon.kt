@@ -10,5 +10,8 @@ data class Icon(
     val iconId: Int,
     val type: String,
     val name: String,
-    val imgUrl: String
+    val imgUrl: String,
+    var readme: String? = null,
+    var license: String? = null,
+    var author: Author? = null
 ) : Parcelable

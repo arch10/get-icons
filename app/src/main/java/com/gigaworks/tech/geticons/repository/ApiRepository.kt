@@ -3,6 +3,7 @@ package com.gigaworks.tech.geticons.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
+import com.gigaworks.tech.geticons.domain.Icon
 import com.gigaworks.tech.geticons.domain.IconSet
 import com.gigaworks.tech.geticons.network.bearer
 import com.gigaworks.tech.geticons.network.model.toDomain
@@ -40,5 +41,18 @@ class ApiRepository @Inject constructor(
                 IconPagingSource(network, iconsetId)
             }
         ).liveData
+
+    suspend fun getIconsInIconSet(iconsetId: Int): Response<List<Icon>> {
+        return when (val networkResponse =
+            safeApiCall { network.getIconsInIconSet(iconsetId, 0).icons }) {
+            is Response.Failure -> {
+                networkResponse
+            }
+            is Response.Success -> {
+                val domainResponse = networkResponse.response.map { it.toDomain() }
+                Response.Success(domainResponse)
+            }
+        }
+    }
 
 }

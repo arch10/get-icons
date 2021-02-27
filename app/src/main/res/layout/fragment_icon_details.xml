@@ -2,9 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.iconsetdetails.IconSetDetailsFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.icondetails.IconDetailsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Icon Set Details"
+            app:title="Icon Details"
             app:navigationIcon="@drawable/left"
             app:navigationIconTint="?attr/colorOnPrimary"
             app:titleTextColor="?attr/colorOnPrimary" />
@@ -32,96 +32,116 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/iconImg"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginTop="@dimen/space_xl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/space_l"
+                android:layout_marginStart="@dimen/space_l"
+                android:layout_marginTop="@dimen/space_xl"
+                tools:text="Icon Name"
+                android:layout_marginEnd="@dimen/space_l"
                 android:textAppearance="?attr/textAppearanceHeadline4"
                 android:textColor="?attr/colorOnBackground"
                 app:layout_constraintEnd_toStartOf="@+id/price"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Icons Set Name" />
+                app:layout_constraintTop_toBottomOf="@+id/iconImg" />
 
             <TextView
                 android:id="@+id/type"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                tools:text="Type"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="?attr/textSecondary"
-                android:layout_marginTop="@dimen/space_sm"
                 app:layout_constraintEnd_toEndOf="@+id/name"
                 app:layout_constraintStart_toStartOf="@+id/name"
-                app:layout_constraintTop_toBottomOf="@+id/author"
-                tools:text="Type" />
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
             <TextView
                 android:id="@+id/author"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                tools:text="Author"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="?attr/colorSecondary"
-                android:layout_marginTop="@dimen/space_sm"
                 app:layout_constraintEnd_toEndOf="@+id/name"
                 app:layout_constraintStart_toStartOf="@+id/name"
-                app:layout_constraintTop_toBottomOf="@+id/name"
-                tools:text="Author Name" />
-
-            <TextView
-                android:id="@+id/license"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceBody1"
-                android:textColor="?attr/colorOnBackground"
-                android:layout_marginTop="@dimen/space_sm"
-                app:layout_constraintEnd_toEndOf="@+id/name"
-                app:layout_constraintStart_toStartOf="@+id/name"
-                app:layout_constraintTop_toBottomOf="@+id/type"
-                tools:text="License" />
+                app:layout_constraintTop_toBottomOf="@+id/type" />
 
             <TextView
                 android:id="@+id/website"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:textAppearance="?attr/textAppearanceBody2"
+                android:layout_marginTop="@dimen/space_sm"
+                tools:text="www.google.com"
+                android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="?attr/colorSecondary"
                 app:layout_constraintEnd_toEndOf="@+id/name"
                 app:layout_constraintStart_toStartOf="@+id/name"
-                app:layout_constraintTop_toBottomOf="@+id/license"
-                tools:text="www.google.co.in" />
+                app:layout_constraintTop_toBottomOf="@+id/author" />
+
+            <ImageView
+                android:id="@+id/premium"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="@dimen/space_l"
+                android:src="@drawable/premium"
+                app:layout_constraintBottom_toBottomOf="@+id/name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/name" />
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                tools:text="$15.00"
                 android:textAppearance="?attr/textAppearanceHeadline5"
                 android:textColor="?attr/colorSecondary"
                 android:textStyle="bold"
                 android:layout_marginEnd="@dimen/space_l"
-                android:layout_marginTop="@dimen/space_m"
+                android:layout_marginTop="@dimen/space_l"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/premium"
-                tools:text="$15.00" />
+                app:layout_constraintTop_toBottomOf="@+id/premium" />
+
+            <TextView
+                android:id="@+id/license"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="license"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:layout_marginTop="@dimen/space_sm"
+                app:layout_constraintEnd_toEndOf="@+id/price"
+                app:layout_constraintStart_toStartOf="@+id/name"
+                app:layout_constraintTop_toBottomOf="@+id/website" />
 
             <LinearLayout
                 android:id="@+id/readmeLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_xl"
-                android:layout_marginBottom="@dimen/space_xl"
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="@+id/name"
+                app:layout_constraintEnd_toEndOf="@+id/price"
                 app:layout_constraintStart_toStartOf="@+id/name"
-                app:layout_constraintTop_toBottomOf="@+id/website">
+                app:layout_constraintTop_toBottomOf="@+id/license">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Readme"
-                    android:textStyle="bold"
-                    android:textAppearance="?attr/textAppearanceBody1" />
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/readme"
@@ -132,44 +152,21 @@
                     android:textColor="?attr/textSecondary" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/premium"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/premium"
-                android:layout_marginEnd="@dimen/space_l"
-                app:layout_constraintBottom_toBottomOf="@+id/name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/name" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/download"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:text="Download"
+                app:backgroundTint="?attr/colorSecondary"
                 android:layout_marginTop="@dimen/space_xl"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/icon_item"
+                android:layout_marginBottom="@dimen/space_xl"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/readmeLayout"
+                app:layout_constraintStart_toStartOf="@+id/readmeLayout"
                 app:layout_constraintTop_toBottomOf="@+id/readmeLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-    <FrameLayout
-        android:id="@+id/loader"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?android:attr/colorBackground"
-        android:visibility="gone"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-    </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

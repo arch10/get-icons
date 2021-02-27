@@ -49,8 +49,8 @@
             android:id="@+id/premium"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/premium"
             android:layout_marginEnd="@dimen/space_l"
+            android:src="@drawable/premium"
             app:layout_constraintBottom_toBottomOf="@+id/name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/icon" />
@@ -66,15 +66,15 @@
 
         <TextView
             android:id="@+id/price"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_m"
             android:textAppearance="?attr/textAppearanceHeadline5"
             android:textColor="?attr/colorSecondary"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/icon"
-            app:layout_constraintEnd_toEndOf="@+id/author"
-            app:layout_constraintStart_toStartOf="@+id/author"
+            app:layout_constraintEnd_toEndOf="@+id/name"
+            app:layout_constraintStart_toStartOf="@+id/name"
             app:layout_constraintTop_toBottomOf="@+id/author"
             tools:text="$15.00" />
 

@@ -8,7 +8,7 @@ fun Fragment.getClassName(): String {
     return this.javaClass.simpleName
 }
 
-fun Fragment.logD(msg: String) {
+fun Fragment.logD(msg: String?) {
     Log.d(TAG, "${this.getClassName()}: $msg")
 }
 

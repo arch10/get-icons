@@ -1,6 +1,5 @@
 package com.gigaworks.tech.geticons.ui.home.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -18,7 +17,7 @@ class IconSetAdapter(private val clickListener: OnIconSetClick) : PagingDataAdap
 
         fun bind(iconSet: IconSet) {
             with(binding) {
-                author.text = iconSet.authorName
+                author.text = iconSet.author.name
                 type.text = iconSet.type
                 price.text = iconSet.price
                 name.text = iconSet.name

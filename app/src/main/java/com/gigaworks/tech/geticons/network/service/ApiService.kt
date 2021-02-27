@@ -22,7 +22,7 @@ interface ApiService {
     @GET("iconsets/{iconSet}/icons")
     suspend fun getIconsInIconSet(
         @Path("iconSet") iconSet: Int,
-        @Query("offset") after: Int?,
+        @Query("offset") after: Int = 0,
         @Query("count") count: Int = 20
     ) : IconResponse
 
