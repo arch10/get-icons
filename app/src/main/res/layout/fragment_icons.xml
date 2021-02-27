@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         tools:listitem="@layout/icon_item"
-        android:layout_marginTop="@dimen/space_xl"
+        android:layout_marginTop="@dimen/space_m"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

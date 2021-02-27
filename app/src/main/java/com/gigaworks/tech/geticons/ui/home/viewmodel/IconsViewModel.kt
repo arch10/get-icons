@@ -2,6 +2,7 @@ package com.gigaworks.tech.geticons.ui.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.gigaworks.tech.geticons.repository.ApiRepository
@@ -15,6 +16,14 @@ class IconsViewModel @Inject constructor(
 
     private val _query = MutableLiveData("")
 
-    val iconList = repository.getIconsByQuery("").cachedIn(viewModelScope)
+    val iconList = _query.switchMap {
+        repository.getIconsByQuery(it ?: "").cachedIn(viewModelScope)
+    }
+
+    fun setQuery(query: String) {
+        if(_query.value != query) {
+            _query.value = query
+        }
+    }
 
 }

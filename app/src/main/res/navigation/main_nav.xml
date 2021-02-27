@@ -12,6 +12,9 @@
         <action
             android:id="@+id/showIconSetDetails"
             app:destination="@id/iconSetDetailsFragment" />
+        <action
+            android:id="@+id/actionSearchIconDetails"
+            app:destination="@id/iconDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/iconSetDetailsFragment"
