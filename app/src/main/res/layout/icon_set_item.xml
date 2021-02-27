@@ -8,6 +8,7 @@
     android:layout_marginStart="@dimen/space_l"
     android:layout_marginTop="@dimen/space_m"
     android:layout_marginEnd="@dimen/space_l"
+    android:layout_marginBottom="@dimen/space_m"
     app:cardCornerRadius="@dimen/space_m"
     app:cardElevation="@dimen/space_sm">
 

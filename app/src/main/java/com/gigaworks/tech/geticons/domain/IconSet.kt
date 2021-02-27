@@ -12,8 +12,8 @@ data class IconSet(
     val isPremium: Boolean,
     val id: Int,
     val readme: String,
-    val authorName: String,
-    val authorWebsite: String,
-    val authorUsername: String,
-    val authorId: Int
+    var authorName: String?,
+    var authorWebsite: String?,
+    var authorUsername: String?,
+    var authorId: Int?
 ) : Parcelable

@@ -7,7 +7,7 @@ import java.text.DecimalFormat
 
 data class IconSetDto(
     @SerializedName("author")
-    val author: Author,
+    val author: Author?,
     @SerializedName("icons_count")
     val iconsCount: Int,
     @SerializedName("iconset_id")
@@ -31,8 +31,8 @@ data class IconSetDto(
 )
 
 fun IconSetDto.toDomain(): IconSet {
-    val authorName = author.name
-    val website = author.website?: ""
+    val authorName = author?.name
+    val website = author?.website
     val license: String = if (isPremium) {
         prices?.get(0)?.license?.name ?: ""
     } else {
@@ -57,7 +57,7 @@ fun IconSetDto.toDomain(): IconSet {
         readme,
         authorName,
         website,
-        author.username,
-        author.userId
+        author?.username,
+        author?.userId
     )
 }

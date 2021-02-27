@@ -51,5 +51,8 @@
         <argument
             android:name="author"
             app:argType="com.gigaworks.tech.geticons.domain.Author" />
+        <action
+            android:id="@+id/actionAuthorIconSetDetails"
+            app:destination="@id/iconSetDetailsFragment" />
     </fragment>
 </navigation>

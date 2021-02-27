@@ -50,7 +50,7 @@ class IconSetDetailsFragment : BaseFragment<FragmentIconSetDetailsBinding>() {
                 readme.text = "N/A"
             }
 
-            if(iconSet.authorWebsite.isEmpty()) {
+            if(iconSet.authorWebsite.isNullOrEmpty()) {
                 website.visible(false)
             } else {
                 website.setOnClickListener {
@@ -61,14 +61,16 @@ class IconSetDetailsFragment : BaseFragment<FragmentIconSetDetailsBinding>() {
             }
 
             author.setOnClickListener {
-                val author = Author(
-                    name = iconSet.authorName,
-                    website = iconSet.authorWebsite,
-                    id = iconSet.authorId,
-                    username = iconSet.authorUsername
-                )
-                val action = IconSetDetailsFragmentDirections.iconSetShowAuthor(author)
-                findNavController().navigate(action)
+                if(iconSet.authorId != null) {
+                    val author = Author(
+                        name = iconSet.authorName?:"",
+                        website = iconSet.authorWebsite?:"",
+                        id = iconSet.authorId!!,
+                        username = iconSet.authorUsername?:""
+                    )
+                    val action = IconSetDetailsFragmentDirections.iconSetShowAuthor(author)
+                    findNavController().navigate(action)
+                }
             }
         }
         viewModel.getIconList(iconSet.id)

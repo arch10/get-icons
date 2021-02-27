@@ -6,9 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.gigaworks.tech.geticons.databinding.FragmentAuthorDetailsBinding
+import com.gigaworks.tech.geticons.domain.IconSet
+import com.gigaworks.tech.geticons.ui.authordetails.adapter.IconSetAdapter
 import com.gigaworks.tech.geticons.ui.authordetails.viewmodel.AuthorDetailsViewModel
 import com.gigaworks.tech.geticons.ui.base.BaseFragment
 import com.gigaworks.tech.geticons.util.Response
@@ -36,6 +40,15 @@ class AuthorDetailsFragment : BaseFragment<FragmentAuthorDetailsBinding>() {
                     logD("size: ${it.response.size}")
                     binding.rv.visible(true)
                     binding.notFound.visible(false)
+                    val adapter = IconSetAdapter(
+                        it.response,
+                        object : IconSetAdapter.OnIconSetClickListener {
+                            override fun onIconSetClick(icon: IconSet) {
+                                val action = AuthorDetailsFragmentDirections.actionAuthorIconSetDetails(icon)
+                                findNavController().navigate(action)
+                            }
+                        })
+                    binding.rv.adapter = adapter
                 }
                 is Response.Failure -> {
                     logD(it.message)
